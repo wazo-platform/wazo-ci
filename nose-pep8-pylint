@@ -11,4 +11,4 @@ fi
 
 nosetests --cover-package=$package_name --with-xunit --with-coverage --cover-xml --cover-erase $package_path/$package_name
 pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt || true
-PYTHONPATH=$package_path:$PYTHONPATH pylint --rcfile=/data/pylintrc $package_name > pylint.txt || true
+PYTHONPATH=$package_path:$PYTHONPATH pylint --rcfile=/data/xivo-ci/pylintrc $package_name > pylint.txt || true
