@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+repo_url="$1"
+repo_directory="$2"
+if [ ! -d "$repo_directory" ]; then
+    git clone "$repo_url" "$repo_directory"
+else
+    pushd "$repo_directory"
+    git pull
+    git fetch -p
+    popd
+fi
