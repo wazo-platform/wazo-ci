@@ -40,6 +40,8 @@ disable=C0103,
 # Missing docstring
         C0111,
         R,
+# Used * or ** magic
+        W0142,
 # Attribute defined outside __init__
         W0201,
 # Access to a protected member of a client class
