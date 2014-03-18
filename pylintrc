@@ -35,14 +35,20 @@ load-plugins=
 # it should appear only once).
 disable=C0103,
         C0323,
-        C0301,  # Line too long
-        C0111,  # Missing docstring
+        # Line too long
+        C0301,
+        # Missing docstring
+        C0111,
         R,
-        W0201,  # Attribute defined outside __init__
-        W0212,  # Access to a protected member of a client class
+        # Attribute defined outside __init__
+        W0201,
+        # Access to a protected member of a client class
+        W0212,
         E1101,
-        E1103,  # Class has no member X (but some types could not be inferred)
-        E1120   # No value passed for parameter %s in function call = sessions injected by decorator of DAO functions
+        # Class has no member X (but some types could not be inferred)
+        E1103,
+        # No value passed for parameter %s in function call = sessions injected by decorator of DAO functions
+        E1120
 
 
 [REPORTS]
