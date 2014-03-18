@@ -50,7 +50,9 @@ disable=C0103,
 # Class has no member X (but some types could not be inferred)
         E1103,
 # No value passed for parameter %s in function call = sessions injected by decorator of DAO functions
-        E1120
+        E1120,
+# Quietly ignore locally
+        I0011
 
 
 [REPORTS]
