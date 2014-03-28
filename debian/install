@@ -1,0 +1,2 @@
+bin/*      usr/bin
+src/pylintrc      usr/share/xivo-ci

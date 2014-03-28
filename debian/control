@@ -1,0 +1,15 @@
+Source: xivo-ci
+Section: admin
+Priority: extra
+Maintainer: XiVO DEV Team <dev@avencall.com>
+Uploaders: XiVO Builder Team <release@xivo.fr>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.4
+
+Package: xivo-ci
+Architecture: all
+Depends: ${misc:Depends},
+         git,
+         python
+Description: XIVO Continuous Integration
+ XIVO Continuous Integration
