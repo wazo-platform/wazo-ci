@@ -1,13 +1,10 @@
 #!/bin/bash
 
 package_name="$1"
-package_path="${2:-"."}"
+package_path="${2:-.}"
 
-if [ -z $1 -o -z $2 ]; then
-    echo "Please give package name and package path" >&2
-    echo "example : $(basename $0) xivo_sysconfd xivo-sysconfd"
-    echo "Or package name without package path" >&2
-    echo "example : $(basename $0) xivo_sysconfd"
+if [ $# -lt 1 ]; then
+    echo "Usage : $0 package_name [module_path]" >&2
     exit 1
 fi
 
