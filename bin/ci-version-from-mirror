@@ -1,0 +1,11 @@
+#!/bin/bash
+
+package="$1"
+distribution="$2"
+mirror_url="$3"
+
+ARCH="$(dpkg-architecture -qDEB_BUILD_ARCH)"
+mirror_uri="dists/${distribution}/main/binary-${ARCH}/Packages"
+existing_version="$(wget -qO- ${mirror_url}/${mirror_uri} | grep -A 2 "^Package: ${package}" | grep '^Version:' | head -n1 | awk '{print $2}')"
+
+echo $existing_version
