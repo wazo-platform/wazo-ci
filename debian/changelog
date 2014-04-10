@@ -1,3 +1,9 @@
+xivo-ci (0.0.5) stable; urgency=low
+
+  * restrict filtering in ci-version-from-mirror
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Thu, 10 Apr 2014 10:33:34 -0400
+
 xivo-ci (0.0.4) stable; urgency=low
 
   * add virtualenv command into jenkins_exec_features
