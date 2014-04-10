@@ -1,3 +1,9 @@
+xivo-ci (0.0.2) stable; urgency=low
+
+  * new script ci-deploy-virtualenv
+
+ -- Cedric Abunar <cabunar@avencall.com>  Thu, 10 Apr 2014 09:05:50 -0400
+
 xivo-ci (0.0.1) stable; urgency=low
 
   * Initial release.
