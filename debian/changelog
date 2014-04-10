@@ -1,3 +1,9 @@
+xivo-ci (0.0.7) stable; urgency=low
+
+  * fix install requirements
+
+ -- Cedric Abunar <cabunar@avencall.com>  Thu, 10 Apr 2014 12:38:19 -0400
+
 xivo-ci (0.0.6) stable; urgency=low
 
   * fix missing variable WORKON_HOME

@@ -15,6 +15,10 @@ cd $ACCEPTANCE_PATH
 git pull
 cp -r features/$FEATURE_NAME $WORKSPACE
 
+if [ -f "requirements.txt" ];then
+	pip install -r requirements.txt
+fi
+
 cd $WORKSPACE
 
 source /usr/local/bin/virtualenvwrapper.sh
