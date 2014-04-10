@@ -18,7 +18,7 @@ cp -r features/$FEATURE_NAME $WORKSPACE
 source /usr/local/bin/virtualenvwrapper.sh
 workon xivo
 if [ -f "requirements.txt" ];then
-	pip install -r requirements.txt
+	pip install --upgrade -r requirements.txt
 fi
 cd $WORKSPACE
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
