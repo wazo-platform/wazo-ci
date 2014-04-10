@@ -1,3 +1,9 @@
+xivo-ci (0.0.6) stable; urgency=low
+
+  * fix missing variable WORKON_HOME
+
+ -- Cedric Abunar <cabunar@avencall.com>  Thu, 10 Apr 2014 11:39:52 -0400
+
 xivo-ci (0.0.5) stable; urgency=low
 
   * restrict filtering in ci-version-from-mirror

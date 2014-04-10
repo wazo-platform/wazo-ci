@@ -3,6 +3,7 @@
 ACCEPTANCE_PATH="/data/xivo-acceptance"
 FEATURE_NAME=$(echo $JOB_NAME | sed 's/acceptance_//g')
 
+export WORKON_HOME="~/envs"
 export PYTHONIOENCODING=UTF-8
 export PYTHONPATH=$ACCEPTANCE_PATH
 
