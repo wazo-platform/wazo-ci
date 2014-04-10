@@ -15,5 +15,9 @@ git pull
 cp -r features/$FEATURE_NAME $WORKSPACE
 
 cd $WORKSPACE
+
+source /usr/local/bin/virtualenvwrapper.sh
+workon xivo
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
+deactivate
 cp xunit-tests.xml /data/test_results/$JOB_NAME.xml
