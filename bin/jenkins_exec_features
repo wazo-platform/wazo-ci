@@ -15,14 +15,12 @@ cd $ACCEPTANCE_PATH
 git pull
 cp -r features/$FEATURE_NAME $WORKSPACE
 
+source /usr/local/bin/virtualenvwrapper.sh
+workon xivo
 if [ -f "requirements.txt" ];then
 	pip install -r requirements.txt
 fi
-
 cd $WORKSPACE
-
-source /usr/local/bin/virtualenvwrapper.sh
-workon xivo
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
 deactivate
 cp xunit-tests.xml /data/test_results/$JOB_NAME.xml
