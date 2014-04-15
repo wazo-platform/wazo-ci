@@ -2,7 +2,5 @@
 
 ENV_NAME="$1"
 
-export WORKON_HOME="~/envs"
-
 source /usr/local/bin/virtualenvwrapper.sh
 workon $ENV_NAME

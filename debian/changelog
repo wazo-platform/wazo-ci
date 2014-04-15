@@ -1,3 +1,9 @@
+xivo-ci (0.0.12) stable; urgency=low
+
+  * remove hardcoded path
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Tue, 15 Apr 2014 16:50:26 -0400
+
 xivo-ci (0.0.11) stable; urgency=low
 
   * add ci-workon
