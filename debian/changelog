@@ -1,3 +1,9 @@
+xivo-ci (0.0.11) stable; urgency=low
+
+  * add ci-workon
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Tue, 15 Apr 2014 16:12:05 -0400
+
 xivo-ci (0.0.10) stable; urgency=low
 
   * fix execute script python into virtualenv
