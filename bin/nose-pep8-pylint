@@ -9,5 +9,9 @@ if [ $# -lt 1 ]; then
 fi
 
 nosetests --cover-package=$package_name --with-xunit --with-coverage --cover-xml --cover-erase $package_path/$package_name
+exit_code=$?
+
 pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt || true
 PYTHONPATH=$package_path:$PYTHONPATH pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
+
+exit $exit_code
