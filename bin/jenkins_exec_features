@@ -18,7 +18,7 @@ if [ -f "requirements.txt" ];then
 fi
 
 if [ $FEATURE_NAME == 'post_wizard' ]; then
-    python ${ACCEPTANCE_PATH}/utils/prerequisite.py
+	python ${ACCEPTANCE_PATH}/utils/prerequisite.py
 fi
 
 cd $WORKSPACE
