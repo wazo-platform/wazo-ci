@@ -5,7 +5,6 @@ FEATURE_NAME=$(echo $JOB_NAME | sed 's/acceptance_//g')
 
 export WORKON_HOME="~/envs"
 export PYTHONIOENCODING=UTF-8
-export PYTHONPATH=$ACCEPTANCE_PATH
 
 cd $ACCEPTANCE_PATH
 git pull
