@@ -52,7 +52,9 @@ disable=C0103,
 # No value passed for parameter %s in function call = sessions injected by decorator of DAO functions
         E1120,
 # Quietly ignore locally
-        I0011
+        I0011,
+# Cannot import X
+        F0401
 
 
 [REPORTS]
