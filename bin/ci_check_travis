@@ -7,6 +7,19 @@ import json
 TRAVIS_API_URL = 'https://api.travis-ci.org/repositories/xivo-pbx'
 
 
+def is_running(status):
+    return status is None
+
+
+def is_passed(status):
+    return status == 0
+
+
+def is_good(infos_package):
+    status = infos_package['last_build_status']
+    return is_running(status) or is_passed(status)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('package', help='Package name to test')
@@ -20,7 +33,7 @@ def main():
     else:
         infos_package = json.load(response)
 
-        if infos_package['last_build_status'] == 0:
+        if is_good(infos_package):
             print 'OK'
         else:
             print 'KO'
