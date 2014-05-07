@@ -1,3 +1,9 @@
+xivo-ci (0.0.16) xivo-dev; urgency=low
+
+  * increase waiting time after installing xivo
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Wed, 07 May 2014 08:56:07 -0400
+
 xivo-ci (0.0.15) stable; urgency=low
 
   * don't fail when travis is running a job
