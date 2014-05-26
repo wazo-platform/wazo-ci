@@ -1,3 +1,9 @@
+xivo-ci (0.0.17) xivo-dev; urgency=low
+
+  * ci_check_status: check branch master instead of last build
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Mon, 26 May 2014 11:24:26 -0400
+
 xivo-ci (0.0.16) xivo-dev; urgency=low
 
   * increase waiting time after installing xivo

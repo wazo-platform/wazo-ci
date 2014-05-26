@@ -7,17 +7,9 @@ import json
 TRAVIS_API_URL = 'https://api.travis-ci.org/repositories/xivo-pbx'
 
 
-def is_running(status):
-    return status is None
-
-
-def is_passed(status):
-    return status == 0
-
-
 def is_good(infos_package):
-    status = infos_package['last_build_status']
-    return is_running(status) or is_passed(status)
+    status = infos_package['branch']['state']
+    return status != 'failed'
 
 
 def main():
@@ -27,7 +19,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        response = urllib2.urlopen('%s/xivo-%s.json' % (TRAVIS_API_URL, args.package))
+        response = urllib2.urlopen('%s/xivo-%s/branches/master' % (TRAVIS_API_URL, args.package))
     except urllib2.HTTPError:
         print 'Error: package %s does not exist on travis' % args.package
     else:
