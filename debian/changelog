@@ -1,3 +1,9 @@
+xivo-ci (0.0.19) stable; urgency=low
+
+  * ci_check_travis: automatically fetch travis repos
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Tue, 27 May 2014 13:12:06 -0400
+
 xivo-ci (0.0.18) stable; urgency=low
 
   * ci_check_travis: add failure state
