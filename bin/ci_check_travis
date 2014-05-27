@@ -9,7 +9,7 @@ TRAVIS_API_URL = 'https://api.travis-ci.org/repositories/xivo-pbx'
 
 def is_good(infos_package):
     status = infos_package['branch']['state']
-    return status != 'failed'
+    return status not in ('failed', 'errored')
 
 
 def main():
