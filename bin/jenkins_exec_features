@@ -10,17 +10,18 @@ cd $ACCEPTANCE_PATH
 git pull
 cp -r features/$FEATURE_NAME $WORKSPACE
 
+cd $WORKSPACE
 source /usr/local/bin/virtualenvwrapper.sh
 workon xivo
-if [ -f "requirements.txt" ];then
+
+if [ -f "requirements.txt" ]; then
 	pip install --upgrade -r requirements.txt
 fi
 
 if [ $FEATURE_NAME == 'post_wizard' ]; then
-	python ${ACCEPTANCE_PATH}/utils/prerequisite.py
+	prerequisite.py
 fi
 
-cd $WORKSPACE
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
 deactivate
 cp xunit-tests.xml /data/test_results/$JOB_NAME.xml
