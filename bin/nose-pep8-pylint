@@ -35,7 +35,7 @@ else
     exit_code=$?
 fi
 
-pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt
-PYTHONPATH=$package_path:$PYTHONPATH pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt
+pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt || true
+PYTHONPATH=$package_path:$PYTHONPATH pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
 
 exit $exit_code
