@@ -28,10 +28,10 @@ if [ $# -lt 1 ]; then
 fi
 
 if [ "$runner" = "trial" ]; then
-    trial --reporter=bwverbose $package_path/$package_name
+    trial --reporter=bwverbose "$package_path/$package_name"
     exit_code=$?
 else
-    nosetests --cover-package=$package_name --with-xunit --with-coverage --cover-xml --cover-erase $package_path/$package_name
+    nosetests --cover-package="$package_name" --with-xunit --with-coverage --cover-xml --cover-erase "$package_path/$package_name"
     exit_code=$?
 fi
 
