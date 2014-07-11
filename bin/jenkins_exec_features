@@ -6,13 +6,16 @@ FEATURE_NAME=$(echo $JOB_NAME | sed 's/acceptance_//g')
 export WORKON_HOME="~/envs"
 export PYTHONIOENCODING=UTF-8
 
+source /usr/local/bin/virtualenvwrapper.sh
+workon xivo
+
+set -e
+
 cd $ACCEPTANCE_PATH
 git pull
 cp -r features/$FEATURE_NAME $WORKSPACE
 
 cd $WORKSPACE
-source /usr/local/bin/virtualenvwrapper.sh
-workon xivo
 
 if [ -f "requirements.txt" ]; then
 	pip install --upgrade -r requirements.txt
@@ -23,5 +26,9 @@ if [ $FEATURE_NAME == 'post_wizard' ]; then
 fi
 
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
-deactivate
+
 cp xunit-tests.xml /data/test_results/$JOB_NAME.xml
+
+set +e
+
+deactivate
