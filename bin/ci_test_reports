@@ -29,6 +29,22 @@ The tests listed here were all passing at the moment of the release.
 
 Step = namedtuple("Step", ('feature', 'scenario', 'step'))
 
+UnitTest = namedtuple("UnitTest", ('unit', 'test'))
+
+
+class UnitTests(object):
+    def __init__(self):
+        self._tests = []
+
+    def add_test(self, unit, test):
+        self._tests.append(UnitTest(unit, test))
+
+    def units(self):
+        return set(test.unit for test in self._tests)
+
+    def tests(self, unit):
+        return [test.test for test in self._tests if test.unit == unit]
+
 
 class Features(object):
     def __init__(self):
@@ -49,27 +65,44 @@ class Features(object):
         return result
 
 
-def get_features(path):
-    dirs = os.listdir(path)
-    features = Features()
-    for file in dirs:
-        if file.endswith('xml'):
-            xml_file_path = os.path.join(path, file)
-            tree = ET.parse(xml_file_path)
-            root = tree.getroot()
+def find_xml_files(path):
+    return [os.path.join(path, filename) for filename in os.listdir(path) if filename.endswith('xml')]
 
-            for child in root:
-                feature_name, scenario_title = child.attrib['classname'].split(':', 1)
-                feature_name = feature_name.strip()
-                scenario_title = scenario_title.strip()
-                step_name = child.attrib['name']
-                features.add_step(feature_name, scenario_title, step_name)
+
+def filter_nodes(files, name):
+    for filepath in files:
+        tree = ET.parse(filepath)
+        root = tree.getroot()
+        if root.attrib['name'] == name:
+            yield root
+
+
+def get_features(path):
+    features = Features()
+    xml_files = find_xml_files(path)
+    for root in filter_nodes(xml_files, 'lettuce'):
+        for child in root:
+            feature_name, scenario_title = child.attrib['classname'].split(':', 1)
+            feature_name = feature_name.strip()
+            scenario_title = scenario_title.strip()
+            step_name = child.attrib['name']
+            features.add_step(feature_name, scenario_title, step_name)
     return features
+
+
+def get_unittests(path):
+    unittests = UnitTests()
+    xml_files = find_xml_files(path)
+    for root in filter_nodes(xml_files, 'nosetests'):
+        for child in root:
+            unit = child.attrib['classname']
+            test = child.attrib['name']
+            unittests.add_test(unit, test)
+    return unittests
 
 
 def format_features(features):
     fobj = StringIO()
-    fobj.write(TEXT_HEADER)
 
     for feature_name in features.names():
         scenarios = features.scenarios(feature_name)
@@ -85,13 +118,33 @@ def _format_feature(feature_name, scenarios):
     feature_info = {'feature_name': feature_name,
                     'title_decoration': '=' * len(feature_name),
                     'scenarios': '\n'.join(formatted_scenarios)}
-    return '\n\n%(feature_name)s\n%(title_decoration)s\n\n%(scenarios)s\n' % feature_info
+    return '\n\n%(feature_name)s\n%(title_decoration)s\n\n%(scenarios)s\n\n' % feature_info
 
 
 def _format_scenario(scenario, steps):
     result = '* %s\n\n' % scenario
     result += '\n'.join('  * %s' % step for step in steps)
     return result
+
+
+def format_unittests(unittests):
+    fobj = StringIO()
+
+    for unit in unittests.units():
+        fobj.write(_format_unit_name(unit))
+        tests = unittests.tests(unit)
+        fobj.write(_format_tests(tests))
+
+    return fobj.getvalue()
+
+
+def _format_unit_name(unit):
+    return '%s\n%s\n\n' % (unit, '=' * len(unit))
+
+
+def _format_tests(tests):
+    formatted_list = '\n'.join('* %s' % test for test in tests)
+    return '%s\n\n' % formatted_list
 
 
 def write_output_file(formatted_text, output_file):
@@ -108,5 +161,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     features = get_features(path)
-    formatted_text = format_features(features)
+    unittests = get_unittests(path)
+
+    formatted_text = TEXT_HEADER
+    formatted_text += format_features(features)
+    formatted_text += format_unittests(unittests)
+
+    print formatted_text
+
     write_output_file(formatted_text, TEST_RESULT_FILE % args.version)
