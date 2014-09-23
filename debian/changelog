@@ -1,3 +1,9 @@
+xivo-ci (0.0.25) xivo-dev; urgency=low
+
+  * ci_check_xivo: allow checking of arbitrary package
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Tue, 23 Sep 2014 11:53:14 -0400
+
 xivo-ci (0.0.24) stable; urgency=low
 
   * ci_test_report: add small introduction to the report
