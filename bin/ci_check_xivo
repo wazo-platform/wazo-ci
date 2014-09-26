@@ -21,10 +21,9 @@
 # Exit status is 0 if XiVO is properly installed on remote XIVO_HOST, 1 otherwise
 
 xivo_host="$1"
-package="${2:-xivo}"
 
 function xivo_is_installed () {
-    xivo_install_status="$(ssh $xivo_host /usr/bin/dpkg-query -W '-f=\${Status}\\n' $package 2> /dev/null)"
+    xivo_install_status="$(ssh $xivo_host /usr/bin/dpkg-query -W '-f=\${Status}\\n' xivo 2> /dev/null)"
     [ "$xivo_install_status" = "install ok installed" ]
 }
 
