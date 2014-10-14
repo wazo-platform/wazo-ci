@@ -4,7 +4,7 @@ import json
 import urllib2
 import sys
 
-TRAVIS_API_URL = 'https://api.travis-ci.org/repositories'
+TRAVIS_API_URL = 'https://api.travis-ci.org/repos'
 TRAVIS_ACCOUNT = 'xivo-pbx'
 
 
@@ -16,7 +16,7 @@ def build_failed(infos_package):
     return build_status(infos_package) in ('failed', 'errored')
 
 
-def list_repos(account):
+def list_repos():
     response = urllib2.urlopen('{url}/{account}'.format(url=TRAVIS_API_URL, account=TRAVIS_ACCOUNT))
     repos = json.load(response)
     return [repo['slug'] for repo in repos]
@@ -25,8 +25,14 @@ def list_repos(account):
 def main():
     return_value = 0
 
-    for repo_slug in list_repos(TRAVIS_ACCOUNT):
-        response = urllib2.urlopen('{url}/{repo_slug}/branches/master'.format(url=TRAVIS_API_URL, repo_slug=repo_slug))
+    for repo_slug in list_repos():
+        url = '{url}/{repo_slug}/branches/master'.format(url=TRAVIS_API_URL, repo_slug=repo_slug)
+        try:
+            response = urllib2.urlopen(url)
+        except urllib2.HTTPError as e:
+            print '{repo_slug}: error while fetching {url}: {http_code}'.format(repo_slug=repo_slug, url=url, http_code=e.code)
+            continue
+
         infos_package = json.load(response)
         if build_failed(infos_package):
             print '{repo_slug}: {status}'.format(repo_slug=repo_slug, status=build_status(infos_package))
