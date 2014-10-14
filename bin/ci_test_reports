@@ -89,9 +89,13 @@ def _format_feature(feature_name, scenarios):
 
 
 def _format_scenario(scenario, steps):
-    result = '* %s\n\n' % scenario
-    result += '\n'.join('  * %s' % step for step in steps)
+    result = '* %s\n\n' % _escape_stars(scenario)
+    result += '\n'.join('  * %s' % _escape_stars(step) for step in steps)
     return result
+
+
+def _escape_stars(string_to_escape):
+    return string_to_escape.replace('*', '\*')
 
 
 def write_output_file(formatted_text, output_file):

@@ -1,3 +1,9 @@
+xivo-ci (0.0.27) xivo-dev; urgency=low
+
+  * ci_test_report: escape rest special characters
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Tue, 14 Oct 2014 10:11:05 -0400
+
 xivo-ci (0.0.26) xivo-dev; urgency=low
 
   * ci_check_xivo: revert previous modification
