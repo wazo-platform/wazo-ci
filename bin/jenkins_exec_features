@@ -13,8 +13,7 @@ set -e
 
 cd $ACCEPTANCE_PATH
 git pull
-cp -r features/$FEATURE_NAME $WORKSPACE
-
+cp -r data/features/$FEATURE_NAME $WORKSPACE
 cd $WORKSPACE
 
 if [ -f "requirements.txt" ]; then
@@ -22,7 +21,7 @@ if [ -f "requirements.txt" ]; then
 fi
 
 if [ $FEATURE_NAME == 'post_wizard' ]; then
-	prerequisite.py
+	./bin/xivo-acceptance -p
 fi
 
 lettuce $FEATURE_NAME --with-xunit --verbosity=3 --xunit-file=xunit-tests.xml
