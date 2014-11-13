@@ -6,7 +6,7 @@ usage() {
     exit 1
 }
 
-while getopts ":r:" opt; do
+while getopts ":rv:" opt; do
     case "$opt" in
         r)
             runner="$OPTARG"
