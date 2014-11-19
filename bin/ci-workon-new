@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ENV_NAME=$1
+
+source /usr/local/bin/virtualenvwrapper.sh
+rmvirtualenv $ENV_NAME
+mkvirtualenv $ENV_NAME
+workon $ENV_NAME
