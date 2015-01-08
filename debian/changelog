@@ -1,4 +1,10 @@
-xivo-ci (0.0.30) UNRELEASED; urgency=low
+xivo-ci (0.0.31) xivo-dev; urgency=low
+
+  * nose-pep8-pylint: fix runner option
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Thu, 08 Jan 2015 10:55:53 -0500
+
+xivo-ci (0.0.30) xivo-dev; urgency=low
 
   * add ci-workon-new
 
