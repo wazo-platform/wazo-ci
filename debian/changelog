@@ -1,3 +1,9 @@
+xivo-ci (0.0.32) xivo-dev; urgency=low
+
+  * nose-pep8-pylint: install nose/pep8/pylint
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Mon, 12 Jan 2015 14:55:42 -0500
+
 xivo-ci (0.0.31) xivo-dev; urgency=low
 
   * nose-pep8-pylint: fix runner option

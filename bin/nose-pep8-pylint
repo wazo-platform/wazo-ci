@@ -35,13 +35,16 @@ if [ -f test-requirements.txt ]; then
 fi
 
 if [ "$runner" = "trial" ]; then
+    pip install --upgrade twisted
     trial --reporter=bwverbose "$package_path/$package_name"
     exit_code=$?
 else
+    pip install --upgrade nose coverage
     nosetests --cover-package="$package_name" --with-xunit --with-coverage --cover-xml --cover-erase "$package_path/$package_name"
     exit_code=$?
 fi
 
+pip install --upgrade pep8 pylint-patcher
 pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt || true
 PYTHONPATH=$package_path:$PYTHONPATH pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
 
