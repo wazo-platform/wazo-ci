@@ -1,3 +1,9 @@
+xivo-ci (0.0.33) xivo-dev; urgency=low
+
+  * nose-pep8-pylint: fail when installing requirements failed
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Mon, 19 Jan 2015 16:15:49 -0500
+
 xivo-ci (0.0.32) xivo-dev; urgency=low
 
   * nose-pep8-pylint: install nose/pep8/pylint

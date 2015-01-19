@@ -29,10 +29,13 @@ package_path="${2:-.}"
 : ${virtualenv:="xivo"}
 
 source ci-workon "$virtualenv"
+
+set -e
 pip install --upgrade -r requirements.txt
 if [ -f test-requirements.txt ]; then
     pip install --upgrade -r test-requirements.txt
 fi
+set +e
 
 if [ "$runner" = "trial" ]; then
     pip install --upgrade twisted
