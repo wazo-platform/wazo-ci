@@ -3,6 +3,7 @@
 usage() {
     echo "Usage: $0 [-v <virtualenv>] [-r <nose|trial>] package_name [module_path]" >&2
     echo "virtualenv defaults to 'xivo'"
+    echo "$0 must be run just outside the tested module."
     exit 1
 }
 
@@ -25,7 +26,6 @@ done
 shift $((OPTIND-1))
 
 package_name="$1"
-package_path="${2:-.}"
 : ${virtualenv:="xivo"}
 
 source ci-workon "$virtualenv"
@@ -39,17 +39,17 @@ set +e
 
 if [ "$runner" = "trial" ]; then
     pip install --upgrade twisted
-    trial --reporter=bwverbose "$package_path/$package_name"
+    trial --reporter=bwverbose "$package_name"
     exit_code=$?
 else
     pip install --upgrade nose coverage
-    nosetests --cover-package="$package_name" --with-xunit --with-coverage --cover-xml --cover-erase "$package_path/$package_name"
+    nosetests --cover-package="$package_name" --with-xunit --with-coverage --cover-xml --cover-erase "$package_name"
     exit_code=$?
 fi
 
 pip install --upgrade pep8 pylint-patcher
-pep8 --repeat --ignore E320,E501 $package_path/$package_name > pep8.txt || true
-PYTHONPATH=$package_path:$PYTHONPATH pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
+pep8 --repeat --ignore E320,E501 $package_name > pep8.txt || true
+pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
 
 deactivate
 
