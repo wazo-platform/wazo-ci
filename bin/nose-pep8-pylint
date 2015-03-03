@@ -47,7 +47,7 @@ else
     exit_code=$?
 fi
 
-pip install --upgrade pep8 pylint-patcher
+pip install --upgrade pep8 pylint pylint-patcher
 pep8 --repeat --ignore E320,E501 $package_name > pep8.txt || true
 pylint-patcher --rcfile=/usr/share/xivo-ci/pylintrc $package_name > pylint.txt || true
 
