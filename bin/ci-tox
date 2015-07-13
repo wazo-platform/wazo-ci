@@ -4,7 +4,9 @@ if ! source ci-workon tox ; then
 	mkvirtualenv tox
 	pip install tox
 fi
+set -xe
 
 tox "$@"
 
+set +xe
 deactivate
