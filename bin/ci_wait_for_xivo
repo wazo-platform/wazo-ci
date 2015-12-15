@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,8 @@ loop_secs="$3"
 
 spent_secs=0
 while [ $spent_secs -lt $timeout_secs ] ; do
-    if [ "$(nmap -p80 $xivo_host -oG - | grep 80/open)" ]; then
+    curl -ks "https://${xivo_host}" | grep -qE 'XIVO - Version: [0-9.]+ "[^"]*"'
+    if [ $? -eq 0 ]; then
         sleep 60  # apt is probably not yet finished, and we might need it afterwards, so wait for apt to finish
         exit 0
     fi
