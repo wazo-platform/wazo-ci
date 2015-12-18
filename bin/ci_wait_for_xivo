@@ -27,8 +27,8 @@ loop_secs="$3"
 
 spent_secs=0
 while [ $spent_secs -lt $timeout_secs ] ; do
-    curl -ks "https://${xivo_host}" | grep -qE 'XIVO - Version: [0-9.]+ "[^"]*"'
-    if [ $? -eq 0 ]; then
+    is_xivo_version_present=$(curl -ks "https://${xivo_host}" | grep -E 'XIVO - Version: [0-9.]+ "[^"]*"')
+    if [ -n $is_xivo_version_present ]; then
         sleep 60  # apt is probably not yet finished, and we might need it afterwards, so wait for apt to finish
         exit 0
     fi
