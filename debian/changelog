@@ -1,3 +1,9 @@
+xivo-ci (0.0.39) xivo-dev; urgency=medium
+
+  * bump version
+
+ -- Etienne Lessard <elessard@proformatique.com>  Fri, 16 Sep 2016 13:58:21 -0400
+
 xivo-ci (0.0.38) xivo-dev; urgency=low
 
   * ci-tox: add set -xe
