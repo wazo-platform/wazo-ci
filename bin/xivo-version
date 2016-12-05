@@ -10,4 +10,4 @@ if [[ ! $RELEASES =~ $RELEASE ]]; then
     exit 1
 fi
 
-wget -q -O - "http://mirror.xivo.io/version/${RELEASE}"
+wget -q -O - "http://mirror.wazo.community/version/${RELEASE}"

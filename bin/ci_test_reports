@@ -13,12 +13,12 @@ path = '/data/test_results'
 
 TEXT_HEADER = """
 ***************************
-XiVO AUTOMATIC TEST REPORTS
+Wazo AUTOMATIC TEST REPORTS
 ***************************
 
 This is a list of tests that are run daily by the `Continuous Integration system
-<http://jenkins.xivo.io>`_ of XiVO. The source code of the tests is available on
-`Github <http://github.com/xivo-pbx/xivo-acceptance>`_.
+<http://jenkins.wazo.community>`_ of Wazo. The source code of the tests is available on
+`Github <http://github.com/wazo-pbx/xivo-acceptance>`_.
 
 The tests listed here were all passing at the moment of the release.
 
