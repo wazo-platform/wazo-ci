@@ -5,7 +5,7 @@ import urllib2
 import sys
 
 TRAVIS_API_URL = 'https://api.travis-ci.org/repos'
-TRAVIS_ACCOUNT = 'xivo-pbx'
+TRAVIS_ACCOUNT = 'wazo-pbx'
 
 
 def build_status(infos_package):
