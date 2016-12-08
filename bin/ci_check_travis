@@ -19,7 +19,7 @@ def build_failed(infos_package):
 def list_repos():
     response = urllib2.urlopen('{url}/{account}?search={account}'.format(url=TRAVIS_API_URL, account=TRAVIS_ACCOUNT))
     repos = json.load(response)
-    return [repo['slug'] for repo in repos]
+    return [repo['slug'] for repo in repos if repo['active']]
 
 
 def main():
