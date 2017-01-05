@@ -8,7 +8,7 @@ from collections import namedtuple
 from docutils.core import publish_string
 
 
-TEST_RESULT_FILE = '/tmp/tests-report-xivo-auto-%s.html'
+TEST_RESULT_FILE = '/tmp/tests-report-wazo-auto-%s.html'
 path = '/data/test_results'
 
 TEXT_HEADER = """
