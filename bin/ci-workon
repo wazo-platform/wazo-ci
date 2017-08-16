@@ -2,5 +2,10 @@
 
 ENV_NAME="$1"
 
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -z "${VIRTUALENVWARPPER_SCRIPT}" -a -r /usr/local/bin/virtualenvwrapper.sh ] ; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+if [ -z "${VIRTUALENVWARPPER_SCRIPT}" -a -r /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] ; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+fi
 workon $ENV_NAME
