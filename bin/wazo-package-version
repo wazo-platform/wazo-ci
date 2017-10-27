@@ -1,0 +1,22 @@
+#!/bin/bash
+
+wazo_version=$1
+
+changelog=$(head -1 debian/changelog)
+if ! [[ "$changelog" =~ \((.*)\) ]] ; then
+    echo "The first line of changelog is '$changelog' and does not match \\(.*\\)"
+    exit 1
+fi
+existing_version=${BASH_REMATCH[1]}
+epoch=
+if [[ "$existing_version" =~ ([0-9]+:) ]]; then
+    epoch=${BASH_REMATCH[1]}
+fi
+
+timestamp=$(date -u +%Y%m%d.%H%M%S)
+git_hash=$(git log -1 --pretty='%h')
+computed="~${timestamp}.${git_hash}"
+
+complete_version=${epoch}${wazo_version}${computed}
+
+echo $complete_version
