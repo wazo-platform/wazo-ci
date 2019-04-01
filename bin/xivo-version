@@ -2,7 +2,7 @@
 
 RELEASE="${1:-"unknown"}"
 
-RELEASES="stable unstable"
+RELEASES="stable unstable oldstable"
 
 if [[ ! $RELEASES =~ $RELEASE ]]; then
     echo "Release not allowed" >&2
