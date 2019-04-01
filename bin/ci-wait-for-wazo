@@ -10,11 +10,11 @@ wazo_host="$1"
 timeout_secs="$2"
 loop_secs="$3"
 wait_after_wazo_version_present="${4:-60}"
+port="${5:-9486}"
 
-confd_port="9486"
 spent_secs=0
 while [ $spent_secs -lt $timeout_secs ] ; do
-    if nc -z -w1 ${wazo_host} ${confd_port}; then
+    if nc -z -w1 ${wazo_host} ${port}; then
         # apt is probably not yet finished, and we might need it afterwards, so wait for apt to finish
         sleep $wait_after_wazo_version_present
         exit 0
