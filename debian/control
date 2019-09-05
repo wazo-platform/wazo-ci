@@ -9,6 +9,7 @@ Package: xivo-ci
 Architecture: all
 Depends: ${misc:Depends},
          git,
-         python
+         python,
+         wget
 Description: Wazo Continuous Integration
  Wazo Continuous Integration
