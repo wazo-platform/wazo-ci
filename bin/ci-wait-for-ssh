@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Wait until ssh is running on remote HOST, checking each INTERVAL seconds, until TIMEOUT seconds
+# Usage : $0 HOST TIMEOUT INTERVAL
+# Exit status is 0 if ssh is running on remote HOST before TIMEOUT, 1 otherwise
+
+host="$1"
+timeout_secs="$2"
+loop_secs="$3"
+port="${5:-22}"
+
+spent_secs=0
+while [ $spent_secs -lt $timeout_secs ] ; do
+    if nc -z -w1 ${host} ${port}; then
+        exit 0
+    fi
+    sleep $loop_secs
+    spent_secs=$((spent_secs + loop_secs))
+done
+exit 1
