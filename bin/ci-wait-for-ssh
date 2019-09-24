@@ -9,7 +9,7 @@
 host="$1"
 timeout_secs="$2"
 loop_secs="$3"
-wait_after_ssh_started="${4:-30}"
+wait_after_ssh_started="${4:-120}"
 port="${5:-22}"
 
 spent_secs=0
