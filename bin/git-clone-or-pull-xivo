@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-XIVO_GIT_URL="https://github.com/wazo-platform"
-xivo_repo="$1"
-
-git-clone-or-pull "$XIVO_GIT_URL/$xivo_repo.git" "/data/$xivo_repo"
