@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if ! source ci-workon tox ; then
-	mkvirtualenv tox
+	mkvirtualenv --python=/usr/bin/python3 tox
 	pip install tox
 fi
 set -xe
