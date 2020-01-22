@@ -1,6 +1,6 @@
 Source: xivo-ci
 Section: admin
-Priority: extra
+Priority: optional
 Maintainer: Wazo Maintainers <dev.wazo@gmail.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.6
@@ -12,4 +12,4 @@ Depends: ${misc:Depends},
          python,
          wget
 Description: Wazo Continuous Integration
- Wazo Continuous Integration
+ Continuous Integration utilities
