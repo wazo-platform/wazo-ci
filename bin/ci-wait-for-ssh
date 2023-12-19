@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Wait until ssh is running on remote HOST, checking each INTERVAL seconds, until TIMEOUT seconds
@@ -9,7 +9,7 @@
 host="$1"
 timeout_secs="$2"
 loop_secs="$3"
-wait_after_ssh_started="${4:-120}"
+wait_after_ssh_started="${4:-60}"
 port="${5:-22}"
 
 spent_secs=0
