@@ -1,3 +1,9 @@
+wazo-ci (0.0.39) wazo-dev-bullseye; urgency=medium
+
+  * rename to wazo-ci
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 20 Dec 2023 13:25:41 -0500
+
 xivo-ci (0.0.38) xivo-dev; urgency=low
 
   * ci-tox: add set -xe
