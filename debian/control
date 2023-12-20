@@ -1,14 +1,17 @@
-Source: xivo-ci
+Source: wazo-ci
 Section: admin
 Priority: optional
 Maintainer: Wazo Maintainers <dev+pkg@wazo.community>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.6
 
-Package: xivo-ci
+Package: wazo-ci
 Architecture: all
 Depends: ${misc:Depends},
          git,
          wget
+Provides: xivo-ci
+Replaces: xivo-ci
+Conflicts: xivo-ci
 Description: Wazo Continuous Integration
  Continuous Integration utilities
